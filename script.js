@@ -54,3 +54,26 @@ let changeGrid = () => {
 changeGrid();
 
 //Each div changes color when clicked
+let divChangesColor = () => {
+    let changeColor;
+    let all_div_child = document.querySelectorAll(".div_child");
+    all_div_child.forEach((item) => {
+        //Computers
+        item.addEventListener("mousemove", () => {
+            changeColor(item);
+        });
+        //Touchscreen
+        item.addEventListener("touchstart", () => {
+            changeColor(item);
+        });
+
+        console.log("Added event listener")
+    })
+
+    //Change color function
+    changeColor = (change_me) => {
+        change_me.classList.add("div_child_activated");
+    }
+}
+
+divChangesColor();

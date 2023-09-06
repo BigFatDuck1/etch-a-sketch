@@ -18,6 +18,10 @@ body {
     border-color: black;
 }
 
+.div_child_activated {
+    background-color: black;
+}
+
 .div_child:hover {
     background-color: grey;
     cursor: pointer;
