@@ -1,6 +1,13 @@
 
+.div_container {
+    display: grid;
+    grid-template-columns: repeat(16, 10px);
+}
+
 .div_child {
     height: 10px;
     width: 10px;
     background-color: red;
+    border-style: solid;
+    border-color: black;
 }
