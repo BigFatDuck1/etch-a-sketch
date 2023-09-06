@@ -1,4 +1,9 @@
-
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .div_container {
     display: grid;
@@ -16,4 +21,8 @@
 .div_child:hover {
     background-color: grey;
     cursor: pointer;
+}
+
+.grid_input, .size_input {
+    padding: 10px;
 }
