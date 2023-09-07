@@ -8,6 +8,7 @@ body {
 .div_container {
     display: grid;
     grid-template-columns: repeat(16, 10px);
+    touch-action: none;
 }
 
 .div_child {

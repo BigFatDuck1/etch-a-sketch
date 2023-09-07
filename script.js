@@ -61,7 +61,6 @@ changeGrid();
 //Each div changes color when clicked
 let divChangesColor = () => {
     let changeColor;
-    let stopListen;
     let all_div_child = document.querySelectorAll(".div_child");
     all_div_child.forEach((item) => {
         
@@ -85,11 +84,6 @@ let divChangesColor = () => {
     //Change color function
     changeColor = (change_me) => {
         change_me.classList.add("div_child_activated");
-    }
-    stopListen = (stop_me) => {
-        stop_me.removeEventListener("pointermove", () => {
-            console.log("Removed")
-        })
     }
 }
 
