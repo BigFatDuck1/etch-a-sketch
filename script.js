@@ -52,6 +52,7 @@ let changeGrid = () => {
         item.style.width = `${one_square_size}px`;
 
     })
+    //Stores the "array" containing all children into a variable (it's not actually an array)
     div_child_array = all_div_child;
 }
 
@@ -60,28 +61,22 @@ changeGrid();
 //Each div changes color when clicked
 let divChangesColor = () => {
     let changeColor;
+    let stopListen;
     let all_div_child = document.querySelectorAll(".div_child");
     all_div_child.forEach((item) => {
         
         //Function that draws when cursor is over the div
-        let hoverDraw = (is_mouse_down) => {
-            item.addEventListener("mouseenter", () => {
-                if(1==1) {
-                    changeColor(item);
-                }
-            });
+        let hoverDraw = () => {
+            changeColor(item);
         }
         //Only activate hoverDraw when mouse is down
-        let mouse_down_or_not = 0; //Mouse is not down right now (=0)
-        document.body.onmousedown = () => {
-            mouse_down_or_not = 1;
-            console.log(mouse_down_or_not)
-        }
-        document.body.onmouseup = () => {
-            mouse_down_or_not = 0;
-            console.log(mouse_down_or_not)
-        }
-        hoverDraw(mouse_down_or_not);
+        document.body.addEventListener("pointerdown", () => {
+            item.addEventListener("pointermove", hoverDraw)
+        });
+
+        document.body.addEventListener("pointerup", () => {
+            item.removeEventListener("pointermove", hoverDraw)
+        });
 
 
 
@@ -90,6 +85,11 @@ let divChangesColor = () => {
     //Change color function
     changeColor = (change_me) => {
         change_me.classList.add("div_child_activated");
+    }
+    stopListen = (stop_me) => {
+        stop_me.removeEventListener("pointermove", () => {
+            console.log("Removed")
+        })
     }
 }
 
