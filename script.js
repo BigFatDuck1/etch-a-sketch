@@ -10,6 +10,9 @@ let one_square_size = 1;
 //Width of entire grid;
 let entire_width = 300;
 
+//All div_child
+let div_child_array;
+
 //Obtain user input for dimension of grid
 
 //Calculate how big each square should be
@@ -49,6 +52,7 @@ let changeGrid = () => {
         item.style.width = `${one_square_size}px`;
 
     })
+    div_child_array = all_div_child;
 }
 
 changeGrid();
@@ -58,16 +62,29 @@ let divChangesColor = () => {
     let changeColor;
     let all_div_child = document.querySelectorAll(".div_child");
     all_div_child.forEach((item) => {
-        //Computers
-        item.addEventListener("mousemove", () => {
-            changeColor(item);
-        });
-        //Touchscreen
-        item.addEventListener("touchstart", () => {
-            changeColor(item);
-        });
+        
+        //Function that draws when cursor is over the div
+        let hoverDraw = (is_mouse_down) => {
+            item.addEventListener("mouseenter", () => {
+                if(1==1) {
+                    changeColor(item);
+                }
+            });
+        }
+        //Only activate hoverDraw when mouse is down
+        let mouse_down_or_not = 0; //Mouse is not down right now (=0)
+        document.body.onmousedown = () => {
+            mouse_down_or_not = 1;
+            console.log(mouse_down_or_not)
+        }
+        document.body.onmouseup = () => {
+            mouse_down_or_not = 0;
+            console.log(mouse_down_or_not)
+        }
+        hoverDraw(mouse_down_or_not);
 
-        console.log("Added event listener")
+
+
     })
 
     //Change color function
@@ -77,3 +94,14 @@ let divChangesColor = () => {
 }
 
 divChangesColor();
+
+//Clear button
+let clearButton = () => {
+    let clear_button = document.querySelector(".clear_button");
+    clear_button.addEventListener("click", () => {
+        div_child_array.forEach((item) => {
+            item.classList.remove("div_child_activated");
+        })
+    })
+}
+clearButton();

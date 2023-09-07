@@ -33,3 +33,7 @@ body {
 .grid_input, .size_input {
     padding: 10px;
 }
+
+.clear_button {
+    margin-top: 10px;
+}
