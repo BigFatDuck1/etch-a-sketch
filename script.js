@@ -15,7 +15,6 @@ let widthContainer = () => {
     div_container.style.width = `${entire_width}px`;
 
 }
-//widthContainer();
 
 //All div_child
 let div_child_array;
@@ -50,7 +49,7 @@ let createDivs = (dimensionX, dimensionY) => {
 
 createDivs(number_of_columns, number_of_rows);
 
-//Modify the CSS grid so there is an appropiate number of columns for the grid
+//Modify CSS grid so there is an appropiate number of columns for the grid
 let changeGrid = () => {
     div_container.style.gridTemplateColumns = `repeat(${number_of_columns},${one_square_size}px)`
     let all_div_child = document.querySelectorAll(".div_child");
@@ -65,33 +64,54 @@ let changeGrid = () => {
 
 changeGrid();
 
+//Updates grid - put this in whenever there are any updates to the parameters
+let updateGrid = (event) => {
+    //Remove previous grid
+    while (div_container.firstChild) {
+        div_container.removeChild(div_container.lastChild);
+    }
+    let new_grid_size = event;
+    //Change grid dimension variables
+    number_of_columns = new_grid_size;
+    number_of_rows = new_grid_size;
+    //Define the size of one square under the new dimensions
+    one_square_size = squareSize(entire_width, number_of_rows);
+    widthContainer();
+    //Create a new grid with the right number of divs
+    createDivs(number_of_columns, number_of_rows);
+    //Change the height and width of each square so it is correct and forms a square
+    changeGrid();
+    //Adds event listener to the new divs (div_child)
+    divChangesColor();
+    //Updates label
+    document.querySelector("#grid_size_label").textContent = `${number_of_columns}x${number_of_columns}`;
+}
+
 //Change grid size after input
 let gridSubmit = () => {
     document.querySelector("#grid_size").addEventListener("input", (event) => {
-        console.log(number_of_columns)
-        //Remove previous grid
-        while (div_container.firstChild) {
-            div_container.removeChild(div_container.lastChild);
-        }
-        let new_grid_size = event.target.value;
-        //Change grid dimension variables
-        number_of_columns = new_grid_size;
-        number_of_rows = new_grid_size;
-        //Define the size of one square under the new dimensions
-        one_square_size = squareSize(entire_width, number_of_rows);
-        //Create a new grid with the right number of divs
-        createDivs(number_of_columns, number_of_rows);
-        //Change the height and width of each square so it is correct and forms a square
-        changeGrid();
-        //Adds event listener to the new divs (div_child)
-        divChangesColor();
-        //Updates label
-        document.querySelector("#grid_size_label").textContent = `${number_of_columns}x${number_of_columns}`;
-
-
+        let new_size = event.target.value;
+        updateGrid(new_size);
     })
 }
 gridSubmit();
+
+//Change container width
+let changeContainerWidth = () => {
+    let width_form = document.querySelector("form");
+    let width_size = document.querySelector("#width_size");
+    width_form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        //Stores value into variable
+        entire_width = width_size.value;
+        //Makes the field empty again
+        width_size.value = "";
+        //Run gridSubmit()
+        updateGrid(number_of_columns);
+
+    })
+}
+changeContainerWidth();
 
 //Each div changes color when clicked
 let divChangesColor = () => {
