@@ -1,8 +1,21 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "VT323", sans-serif;
+    touch-action: none;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+label {
+    font-size: 1.2em;
 }
 
 .div_container {
