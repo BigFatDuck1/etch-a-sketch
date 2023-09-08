@@ -10,6 +10,13 @@ let one_square_size = 1;
 //Width of entire grid;
 let entire_width = 300;
 
+let widthContainer = () => {
+    div_container.style.height = `${entire_width}px`;
+    div_container.style.width = `${entire_width}px`;
+
+}
+//widthContainer();
+
 //All div_child
 let div_child_array;
 
@@ -50,6 +57,7 @@ let changeGrid = () => {
     all_div_child.forEach((item) => {
         item.style.height = `${one_square_size}px`;
         item.style.width = `${one_square_size}px`;
+        console.log(item.style.height)
 
     })
     //Stores the "array" containing all children into a variable (it's not actually an array)
@@ -57,6 +65,27 @@ let changeGrid = () => {
 }
 
 changeGrid();
+
+//Change grid size after input
+let gridSubmit = () => {
+    document.querySelector("#grid_size").addEventListener("input", (event) => {
+        while (div_container.firstChild) {
+            div_container.removeChild(div_container.lastChild);
+        }
+        let new_grid_size = event.target.value;
+        number_of_columns = new_grid_size;
+        number_of_rows = new_grid_size;
+        one_square_size = squareSize(entire_width, number_of_rows);
+        console.log(one_square_size);
+        createDivs(number_of_columns, number_of_rows);
+        changeGrid();
+        console.log(number_of_columns, ", ", number_of_rows);
+        divChangesColor();
+
+
+    })
+}
+gridSubmit();
 
 //Each div changes color when clicked
 let divChangesColor = () => {
