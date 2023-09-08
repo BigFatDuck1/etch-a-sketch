@@ -229,6 +229,7 @@ let clearButton = () => {
     clear_button.addEventListener("click", () => {
         div_child_array.forEach((item) => {
             item.classList.remove("div_child_activated");
+            item.style.backgroundColor = "white";
         })
     })
 }
