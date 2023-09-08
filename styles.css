@@ -50,3 +50,27 @@ label {
 .clear_button {
     margin-top: 10px;
 }
+
+.btn {
+    
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 5px 10px 5px;
+    border: 0;
+    color: #3a4149;
+    background: #e7ebee;
+    line-height: 1.15;
+    font-family: "VT323";
+    font-size: 1.1em;
+}
+.btn:hover {
+    transition: all .1s ease;
+    box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+}
+.btn:active {
+    background-color: darkgray;
+    color: white;
+}
