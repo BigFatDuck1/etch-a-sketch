@@ -45,6 +45,10 @@ label {
     cursor: pointer;
 }
 
+.div_child_rainbow {
+    background-color: red;
+}
+
 .grid_input, .size_input {
     padding: 10px;
     display: flex;
@@ -95,6 +99,7 @@ label {
     outline: none;
 }
 
+/* W3Schools */
 .slider {
     /* Removes default style */
     appearance: none;
@@ -102,7 +107,7 @@ label {
     height: 15px; 
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
-    opacity: 0.6; /* Set transparency (for mouse-over effects on hover) */
+    opacity: 0.75; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
   }
@@ -128,6 +133,6 @@ label {
     cursor: pointer; /* Cursor on hover */
   }
 
-  .erase_button, .draw_button {
+  .erase_button, .draw_button, .rainbow_button {
     margin-top: 10px;
   }

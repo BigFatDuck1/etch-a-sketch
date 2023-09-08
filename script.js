@@ -13,6 +13,13 @@ let entire_width = 300;
 //Mode: Erase = 0, Draw = 1
 let mode = 1;
 
+//Random number function 
+let randNumber = (max) => {
+    let number;
+    number = Math.floor(Math.random() * max);
+    return number;
+}
+
 //Erase or draw
 let penButton = () => {
     document.querySelector(".draw_button").addEventListener("click", () => {
@@ -22,6 +29,8 @@ let penButton = () => {
         document.querySelector(".draw_button").classList.add("btn_activated");
         //Deactivate other button
         document.querySelector(".erase_button").classList.remove("btn_activated")
+        document.querySelector(".rainbow_button").classList.remove("btn_activated");
+
     })
 }
 let eraseButton = () => {
@@ -32,10 +41,26 @@ let eraseButton = () => {
         document.querySelector(".erase_button").classList.add("btn_activated");
         //Deactivate other button
         document.querySelector(".draw_button").classList.remove("btn_activated")
+        document.querySelector(".rainbow_button").classList.remove("btn_activated");
+
     })    
 }
 penButton();
 eraseButton();
+
+//Rainbow button
+let rainbowButton = () => {
+    document.querySelector(".rainbow_button").addEventListener("click", () => {
+        //Mode: Rainbow
+        mode = 2;
+        //Button becomes activated
+        document.querySelector(".rainbow_button").classList.add("btn_activated");
+        //Deactivate other button
+        document.querySelector(".draw_button").classList.remove("btn_activated");
+        document.querySelector(".erase_button").classList.remove("btn_activated");
+    })
+}
+rainbowButton();
 
 //Defines dimension of container
 let widthContainer = () => {
@@ -145,6 +170,7 @@ changeContainerWidth();
 let divChangesColor = () => {
     let changeColor;
     let eraseColor;
+    let rainbowColor;
     let all_div_child = document.querySelectorAll(".div_child");
     all_div_child.forEach((item) => {
         
@@ -156,6 +182,9 @@ let divChangesColor = () => {
             } else if (mode == 0) {
                 //Erase
                 eraseColor(item);
+            } else if (mode == 2) {
+                //Rainbow
+                rainbowColor(item);
             }
         }
         //Only activate hoverDraw when mouse is down
@@ -173,11 +202,22 @@ let divChangesColor = () => {
 
     //Change color function
     changeColor = (change_me) => {
+        change_me.style.backgroundColor = "black";
         change_me.classList.add("div_child_activated");
     }
     //Eraser
     eraseColor = (change_me) => {
         change_me.classList.remove("div_child_activated");
+        change_me.style.backgroundColor = "white";
+    }
+    //Rainbow
+    rainbowColor = (change_me) => {
+        change_me.classList.add("div_child_rainbow");
+        //Change it to random
+        let r = randNumber(255);
+        let g = randNumber(255);
+        let b = randNumber(255)
+        change_me.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     }
 }
 
