@@ -10,6 +10,34 @@ let one_square_size = 1;
 //Width of entire grid;
 let entire_width = 300;
 
+//Mode: Erase = 0, Draw = 1
+let mode = 1;
+
+//Erase or draw
+let penButton = () => {
+    document.querySelector(".draw_button").addEventListener("click", () => {
+        //Mode: Draw
+        mode = 1;
+        //Button becomes activated
+        document.querySelector(".draw_button").classList.add("btn_activated");
+        //Deactivate other button
+        document.querySelector(".erase_button").classList.remove("btn_activated")
+    })
+}
+let eraseButton = () => {
+    document.querySelector(".erase_button").addEventListener("click", () => {
+        //Mode: Erase
+        mode = 0;
+        //Button becomes activated
+        document.querySelector(".erase_button").classList.add("btn_activated");
+        //Deactivate other button
+        document.querySelector(".draw_button").classList.remove("btn_activated")
+    })    
+}
+penButton();
+eraseButton();
+
+//Defines dimension of container
 let widthContainer = () => {
     div_container.style.height = `${entire_width}px`;
     div_container.style.width = `${entire_width}px`;
@@ -116,12 +144,19 @@ changeContainerWidth();
 //Each div changes color when clicked
 let divChangesColor = () => {
     let changeColor;
+    let eraseColor;
     let all_div_child = document.querySelectorAll(".div_child");
     all_div_child.forEach((item) => {
         
         //Function that draws when cursor is over the div
         let hoverDraw = () => {
-            changeColor(item);
+            if(mode == 1) {
+                //Draw
+                changeColor(item);
+            } else if (mode == 0) {
+                //Erase
+                eraseColor(item);
+            }
         }
         //Only activate hoverDraw when mouse is down
         document.body.addEventListener("pointerdown", () => {
@@ -139,6 +174,10 @@ let divChangesColor = () => {
     //Change color function
     changeColor = (change_me) => {
         change_me.classList.add("div_child_activated");
+    }
+    //Eraser
+    eraseColor = (change_me) => {
+        change_me.classList.remove("div_child_activated");
     }
 }
 

@@ -73,7 +73,11 @@ label {
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }
 .btn:active {
-    background-color: darkgray;
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+.btn_activated {
+    background-color: rgb(37, 37, 37);
     color: white;
 }
 
@@ -113,4 +117,8 @@ label {
     height: 20px; /* Slider handle height */
     background: #080808; /* Green background */
     cursor: pointer; /* Cursor on hover */
+  }
+
+  .erase_button, .draw_button {
+    margin-top: 10px;
   }
