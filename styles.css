@@ -8,6 +8,7 @@ body {
     align-items: center;
     font-family: "VT323", sans-serif;
     touch-action: none;
+    background-color: rgb(227, 227, 227);
 }
 
 h1 {
@@ -16,6 +17,7 @@ h1 {
 
 label {
     font-size: 1.2em;
+    font-weight: 580;
 }
 
 .div_container {
@@ -84,6 +86,13 @@ label {
 .input_form {
     border: none;
     border-bottom: 2px solid;
+    background-color: transparent;
+    font-family: "VT323";
+    font-size: 20px;
+}
+
+.input_form:focus {
+    outline: none;
 }
 
 .slider {
