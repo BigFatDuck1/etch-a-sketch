@@ -57,7 +57,6 @@ let changeGrid = () => {
     all_div_child.forEach((item) => {
         item.style.height = `${one_square_size}px`;
         item.style.width = `${one_square_size}px`;
-        console.log(item.style.height)
 
     })
     //Stores the "array" containing all children into a variable (it's not actually an array)
@@ -69,18 +68,25 @@ changeGrid();
 //Change grid size after input
 let gridSubmit = () => {
     document.querySelector("#grid_size").addEventListener("input", (event) => {
+        console.log(number_of_columns)
+        //Remove previous grid
         while (div_container.firstChild) {
             div_container.removeChild(div_container.lastChild);
         }
         let new_grid_size = event.target.value;
+        //Change grid dimension variables
         number_of_columns = new_grid_size;
         number_of_rows = new_grid_size;
+        //Define the size of one square under the new dimensions
         one_square_size = squareSize(entire_width, number_of_rows);
-        console.log(one_square_size);
+        //Create a new grid with the right number of divs
         createDivs(number_of_columns, number_of_rows);
+        //Change the height and width of each square so it is correct and forms a square
         changeGrid();
-        console.log(number_of_columns, ", ", number_of_rows);
+        //Adds event listener to the new divs (div_child)
         divChangesColor();
+        //Updates label
+        document.querySelector("#grid_size_label").textContent = `${number_of_columns}x${number_of_columns}`;
 
 
     })
