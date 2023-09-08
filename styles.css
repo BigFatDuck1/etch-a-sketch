@@ -45,6 +45,8 @@ label {
 
 .grid_input, .size_input {
     padding: 10px;
+    display: flex;
+    gap: 5px;
 }
 
 .clear_button {
@@ -79,3 +81,36 @@ label {
     border: none;
     border-bottom: 2px solid;
 }
+
+.slider {
+    /* Removes default style */
+    appearance: none;
+    width: 100%; 
+    height: 15px; 
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.6; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+.slider:hover {
+    opacity: 1;
+}
+  
+  /* Taken from W3Schools */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #2d2d2d; /* Green background */
+    border-radius: 5px;
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #080808; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
