@@ -74,3 +74,8 @@ label {
     background-color: darkgray;
     color: white;
 }
+
+.input_form {
+    border: none;
+    border-bottom: 2px solid;
+}
